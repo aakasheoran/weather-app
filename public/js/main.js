@@ -8,7 +8,7 @@ weatherForm.addEventListener('submit', (event) => {
   dataState.innerText = 'Loading...';
   message.innerText = '';
   const query = searchInput.value;
-  fetch(`http://localhost:8000/weather?address=${query}`).then((res) => {
+  fetch(`/weather?address=${query}`).then((res) => {
     res.json().then((data) => {
       if (data.error) {
         message.innerText = data.error;
