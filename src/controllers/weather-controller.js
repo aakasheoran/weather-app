@@ -15,10 +15,9 @@ const weatherController = async (req, res) => {
     const options = {
       unitToUse: unit || ''
     }
-    const { temperature } = await forecast(lat, long, placeName, options);
-    const forecastText = `It is currently ${temperature}°C in ${placeName}.`
+    const data = await forecast(lat, long, placeName, options);
     res.send({
-      forecast: forecastText,
+      forecast: data,
       location: city,
       address: placeName
     });
