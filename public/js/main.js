@@ -8,12 +8,13 @@ weatherForm.addEventListener('submit', (event) => {
   dataState.innerText = 'Loading...';
   message.innerText = '';
   const query = searchInput.value;
-  fetch(`/weather?address=${query}`).then((res) => {
+  fetch(`/api/weather?address=${query}`).then((res) => {
     res.json().then((data) => {
       if (data.error) {
         message.innerText = data.error;
       } else {
-        message.innerText = data.forecast;
+        const text = `${data.address}\n${data.forecast.daily.data[0].summary} It is currently ${data.forecast.currently.temperature}°C.\nThe high today is ${data.forecast.daily.data[0].temperatureHigh}°C with a low of ${data.forecast.daily.data[0].temperatureLow}°C.\nThere is ${Math.round(data.forecast.currently.humidity)}% chance of rain.`;
+        message.innerText = text;
       }
       dataState.innerText = '';
     });

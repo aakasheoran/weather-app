@@ -39,7 +39,7 @@ app.get('/help', (req, res) => {
   })
 });
 
-app.get('/weather', weatherController);
+app.get('/api/weather', weatherController);
 
 app.get('/help/*', (req, res) => {
   res.render('404', {
